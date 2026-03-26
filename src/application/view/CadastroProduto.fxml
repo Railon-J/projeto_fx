@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.CadastroProdutoController">
+
+   <children>
+
+      <Label layoutX="218.0" layoutY="22.0" text="Cadastro de Produtos">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+
+      <!-- Campos -->
+      <TextField fx:id="txtNome" layoutX="14.0" layoutY="86.0" promptText="Nome" />
+      <TextField fx:id="txtDescricao" layoutX="225.0" layoutY="86.0" promptText="Descrição" />
+      <TextField fx:id="txtCategoria" layoutX="426.0" layoutY="86.0" promptText="Categoria" />
+
+      <TextField fx:id="txtPreco" layoutX="14.0" layoutY="142.0" promptText="Preço" />
+      <TextField fx:id="txtQuantidade" layoutX="225.0" layoutY="142.0" promptText="Quantidade" />
+
+      <!-- Labels -->
+      <Label layoutX="14.0" layoutY="64.0" text="Nome" />
+      <Label layoutX="225.0" layoutY="64.0" text="Descrição" />
+      <Label layoutX="426.0" layoutY="64.0" text="Categoria" />
+      <Label layoutX="16.0" layoutY="118.0" text="Preço" />
+      <Label layoutX="225.0" layoutY="118.0" text="Quantidade" />
+
+      <!-- Botão -->
+      <Button fx:id="btnSalvar" layoutX="390.0" layoutY="142.0" onAction="#Salvar" text="Salvar" />
+      <TextField fx:id="txtBuscar" layoutX="14.0" layoutY="200.0" prefHeight="26.0" prefWidth="246.0" promptText="Digite um texto para pesquisar um produto" />
+      <Button fx:id="btnBuscar" layoutX="276.0" layoutY="200.0" mnemonicParsing="false" onAction="#Pesquisar" text="Buscar" />
+
+   </children>
+</AnchorPane>
