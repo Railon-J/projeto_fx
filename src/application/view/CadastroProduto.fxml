@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -32,9 +34,22 @@
       <Label layoutX="225.0" layoutY="118.0" text="Quantidade" />
 
       <!-- Botão -->
-      <Button fx:id="btnSalvar" layoutX="390.0" layoutY="142.0" onAction="#Salvar" text="Salvar" />
-      <TextField fx:id="txtBuscar" layoutX="14.0" layoutY="200.0" prefHeight="26.0" prefWidth="246.0" promptText="Digite um texto para pesquisar um produto" />
-      <Button fx:id="btnBuscar" layoutX="276.0" layoutY="200.0" mnemonicParsing="false" onAction="#Pesquisar" text="Buscar" />
+      <Button fx:id="btnSalvar" layoutX="426.0" layoutY="187.0" onAction="#Salvar" prefHeight="26.0" prefWidth="62.0" text="Salvar" />
+      <TextField fx:id="txtBuscar" layoutX="16.0" layoutY="187.0" prefHeight="26.0" prefWidth="246.0" promptText="Digite um texto para pesquisar um produto" />
+      <Button fx:id="btnBuscar" layoutX="287.0" layoutY="187.0" mnemonicParsing="false" onAction="#Pesquisar" prefHeight="26.0" prefWidth="62.0" text="Buscar" />
+      <TextField fx:id="txtid" layoutX="426.0" layoutY="142.0" promptText="ID" />
+      <Label layoutX="426.0" layoutY="118.0" text="ID" />
+      <TableView fx:id="tabProdutos" layoutY="229.0" prefHeight="170.0" prefWidth="601.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="72.800048828125" text="Id" />
+          <TableColumn fx:id="colNome" prefWidth="88.7999267578125" text="Nome" />
+            <TableColumn fx:id="colDescricao" prefWidth="104.00006103515625" text="Descrição" />
+            <TableColumn fx:id="colCategoria" prefWidth="128.0" text="Categoria" />
+            <TableColumn fx:id="colPreco" prefWidth="97.5999755859375" text="Preço" />
+            <TableColumn fx:id="colQuantidade" prefWidth="113.5999755859375" text="Quantidade" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnExcluir" layoutX="513.0" layoutY="187.0" onAction="#Excluir" prefHeight="26.0" prefWidth="62.0" text="Excluir" />
 
    </children>
 </AnchorPane>
