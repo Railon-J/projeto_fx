@@ -17,30 +17,34 @@ public class ProdutoModel {
     private double preco;
     private int quantidade;
     private int id;
+    private String cod_barra;
 
-    public ProdutoModel(int id, String nome, String descricao, String categoria, double preco, int quantidade) {
+    public ProdutoModel(int id, String nome, String descricao, String categoria, double preco, int quantidade, String cod_barra) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.categoria = categoria;
         this.preco = preco;
         this.quantidade = quantidade;
+        this.cod_barra = cod_barra;
     }
 
-    // GETTERS
+ // GETTERS
     public int getId() { return this.id; }
     public String getNome() { return this.nome; }
-    public String getdescricao() { return this.descricao; }
-    public String getcategoria() { return this.categoria; }
-    public double getpreco() { return this.preco; }
-    public int getquantidade() { return this.quantidade; }
-
+    public String getDescricao() { return this.descricao; }
+    public String getCategoria() { return this.categoria; }
+    public double getPreco() { return this.preco; }
+    public int getQuantidade() { return this.quantidade; }
+    public String getCod() { return this.cod_barra; }
     // SETTERS
+    public void setId(int id) { this.id = id; }
     public void setNome(String nome) { this.nome = nome; }
-    public void setdescricao(String descricao) { this.descricao = descricao; }
-    public void setcategoria(String categoria) { this.categoria = categoria; }
-    public void setpreco(double preco) { this.preco = preco; }
-    public void setquantidade(int quantidade) { this.quantidade = quantidade; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
+    public void setCategoria(String categoria) { this.categoria = categoria; }
+    public void setPreco(double preco) { this.preco = preco; }
+    public void setQuantidade(int quantidade) { this.quantidade = quantidade; }
+    public void setCod(String cod_barra) { this.cod_barra = cod_barra; }
 
     // SALVAR (INSERT ou UPDATE)
     public void Salvar() {
@@ -49,7 +53,7 @@ public class ProdutoModel {
             if (this.id > 0) {
                 // UPDATE
                 PreparedStatement consulta = conn.prepareStatement(
-                    "UPDATE produto SET nome=?, descricao=?, categoria=?, preco=?, quantidade=? WHERE id=?"
+                    "UPDATE produto SET nome=?, descricao=?, categoria=?, preco=?, quantidade=?, cod_barra=? WHERE id=?"
                 );
 
                 consulta.setString(1, this.nome);
@@ -57,7 +61,8 @@ public class ProdutoModel {
                 consulta.setString(3, this.categoria);
                 consulta.setDouble(4, this.preco);
                 consulta.setInt(5, this.quantidade);
-                consulta.setInt(6, this.id);
+                consulta.setInt(7, this.id);
+                consulta.setString(6, this.cod_barra);
 
                 consulta.executeUpdate();
 
@@ -68,7 +73,7 @@ public class ProdutoModel {
             } else {
                 // INSERT
                 PreparedStatement consulta = conn.prepareStatement(
-                    "INSERT INTO produto (nome, descricao, categoria, preco, quantidade) VALUES (?,?,?,?,?)"
+                    "INSERT INTO produto (nome, descricao, categoria, preco, quantidade,cod_barra) VALUES (?,?,?,?,?,?)"
                 );
 
                 consulta.setString(1, this.nome);
@@ -76,7 +81,8 @@ public class ProdutoModel {
                 consulta.setString(3, this.categoria);
                 consulta.setDouble(4, this.preco);
                 consulta.setInt(5, this.quantidade);
-
+                consulta.setString(6, this.cod_barra);
+                
                 consulta.executeUpdate();
 
                 Alert mensagem = new Alert(Alert.AlertType.CONFIRMATION);
@@ -108,6 +114,7 @@ public class ProdutoModel {
                 this.categoria = resultado.getString("categoria");
                 this.quantidade = resultado.getInt("quantidade");
                 this.preco = resultado.getDouble("preco");
+                this.cod_barra = resultado.getString("cod_barra");
             } else {
                 Alert mensagem = new Alert(Alert.AlertType.ERROR);
                 mensagem.setContentText("Produto não encontrado!");
@@ -143,7 +150,7 @@ public class ProdutoModel {
         }
     }
     
-    public List <ProdutoModel>ListarProdutos(String valor) {
+    public List <ProdutoModel>ListarProdutos(String valor) {	
         List <ProdutoModel> produtos = new ArrayList<ProdutoModel>();
         try(Connection conn = conexao.getConnection();
                 PreparedStatement consulta = conn.prepareStatement("Select * from produto");
@@ -164,11 +171,12 @@ public class ProdutoModel {
                         resultado.getString("descricao"),
                         resultado.getString("categoria"),
                         resultado.getDouble("preco"),
-                        resultado.getInt("quantidade")
+                        resultado.getInt("quantidade"),
+                        resultado.getString("cod_barra")
                         );
                 produtos.add(p);
             }
         }catch(Exception e) {e.printStackTrace();}
         return produtos;
-    }
+    }	
 }

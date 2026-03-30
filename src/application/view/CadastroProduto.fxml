@@ -35,11 +35,11 @@
 
       <!-- Botão -->
       <Button fx:id="btnSalvar" layoutX="426.0" layoutY="187.0" onAction="#Salvar" prefHeight="26.0" prefWidth="62.0" text="Salvar" />
-      <TextField fx:id="txtBuscar" layoutX="16.0" layoutY="187.0" prefHeight="26.0" prefWidth="246.0" promptText="Digite um texto para pesquisar um produto" />
+      <TextField fx:id="txtBuscar" layoutX="16.0" layoutY="187.0" onAction="#Pesquisar" prefHeight="26.0" prefWidth="246.0" promptText="Digite um texto para pesquisar um produto" />
       <Button fx:id="btnBuscar" layoutX="287.0" layoutY="187.0" mnemonicParsing="false" onAction="#Pesquisar" prefHeight="26.0" prefWidth="62.0" text="Buscar" />
-      <TextField fx:id="txtid" layoutX="426.0" layoutY="142.0" promptText="ID" />
+      <TextField fx:id="txtid" disable="true" editable="false" layoutX="426.0" layoutY="142.0" promptText="ID" />
       <Label layoutX="426.0" layoutY="118.0" text="ID" />
-      <TableView fx:id="tabProdutos" layoutY="229.0" prefHeight="170.0" prefWidth="601.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <TableView fx:id="tabProdutos" layoutY="229.0" onMouseClicked="#PesquisarTabela" prefHeight="170.0" prefWidth="601.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="72.800048828125" text="Id" />
           <TableColumn fx:id="colNome" prefWidth="88.7999267578125" text="Nome" />
@@ -50,6 +50,8 @@
         </columns>
       </TableView>
       <Button fx:id="btnExcluir" layoutX="513.0" layoutY="187.0" onAction="#Excluir" prefHeight="26.0" prefWidth="62.0" text="Excluir" />
+      <TextField fx:id="txtCod" layoutX="14.0" layoutY="35.0" promptText="Código de Barras" />
+      <Label layoutX="15.0" layoutY="13.0" text="Código de Barras" />
 
    </children>
 </AnchorPane>
