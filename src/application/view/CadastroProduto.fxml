@@ -47,6 +47,7 @@
             <TableColumn fx:id="colCategoria" prefWidth="128.0" text="Categoria" />
             <TableColumn fx:id="colPreco" prefWidth="97.5999755859375" text="Preço" />
             <TableColumn fx:id="colQuantidade" prefWidth="113.5999755859375" text="Quantidade" />
+            <TableColumn fx:id="colCod" prefWidth="113.5999755859375" text="Código de Barra" />
         </columns>
       </TableView>
       <Button fx:id="btnExcluir" layoutX="513.0" layoutY="187.0" onAction="#Excluir" prefHeight="26.0" prefWidth="62.0" text="Excluir" />

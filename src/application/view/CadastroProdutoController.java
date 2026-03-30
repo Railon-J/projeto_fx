@@ -27,6 +27,7 @@ public class CadastroProdutoController {
     @FXML private TextField txtNome;
     @FXML private TextField txtPreco;
     @FXML private TextField txtid; 
+    @FXML private TextField txtCod; 
 
     @FXML private TableColumn<ProdutoModel, String> colCategoria;
     @FXML private TableColumn<ProdutoModel, String> colDescricao;
@@ -34,6 +35,7 @@ public class CadastroProdutoController {
     @FXML private TableColumn<ProdutoModel, String> colNome;
     @FXML private TableColumn<ProdutoModel, Double> colPreco;
     @FXML private TableColumn<ProdutoModel, Integer> colQuantidade; 
+    @FXML private TableColumn<ProdutoModel, Integer> colCod; 
 
     @FXML private TableView<ProdutoModel> tabProdutos;
     private ObservableList<ProdutoModel> listaProdutos;
@@ -45,7 +47,7 @@ public class CadastroProdutoController {
     public void Salvar() {  
         if(txtNome.getText().isEmpty() || txtDescricao.getText().isEmpty() ||
            txtCategoria.getText().isEmpty() || txtPreco.getText().isEmpty() ||
-           txtQuantidade.getText().isEmpty()) {
+           txtQuantidade.getText().isEmpty()|| txtCod.getText().isEmpty()) {
             
             String erro = "";
             if(txtNome.getText().isEmpty()) erro += "\nNome vazio";
@@ -53,6 +55,7 @@ public class CadastroProdutoController {
             if(txtCategoria.getText().isEmpty()) erro += "\nCategoria vazia";
             if(txtPreco.getText().isEmpty()) erro += "\nPreço vazio";
             if(txtQuantidade.getText().isEmpty()) erro += "\nQuantidade vazia";
+            if(txtCod.getText().isEmpty()) erro += "\nCódigo de Barras vazio";
 
             Alert mensagem = new Alert(Alert.AlertType.INFORMATION);
             mensagem.setContentText("Preencha os campos:" + erro);
@@ -64,6 +67,7 @@ public class CadastroProdutoController {
                 produto.setCategoria(txtCategoria.getText());
                 produto.setPreco(Double.parseDouble(txtPreco.getText()));
                 produto.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+                produto.setCod(txtCod.getText());
 
                 produto.Salvar();
                 produto = new ProdutoModel(0, null, null, null, 0, 0, null);
@@ -73,7 +77,8 @@ public class CadastroProdutoController {
                 txtCategoria.clear();
                 txtPreco.clear();
                 txtQuantidade.clear();
-                txtid.clear(); // apenas limpa, não usa para salvar
+                txtid.clear(); 
+                txtCod.clear();
             } catch (NumberFormatException e) {
                 Alert mensagem = new Alert(Alert.AlertType.ERROR);
                 mensagem.setContentText("Erro de formato numérico! Verifique os campos Preço e Quantidade.");
@@ -93,6 +98,7 @@ public class CadastroProdutoController {
             txtPreco.setText(nf.format(produto.getPreco()));
             txtQuantidade.setText(String.valueOf(produto.getQuantidade()));
             txtid.setText(String.format("%06d", produto.getId()));
+            txtCod.setText(produto.getCod());
         } else {
             Alert mensagem = new Alert(Alert.AlertType.INFORMATION);
             mensagem.setContentText("Digite algo para buscar!");
@@ -112,6 +118,7 @@ public class CadastroProdutoController {
             txtPreco.clear();
             txtQuantidade.clear();
             txtid.clear();
+            txtCod.clear();
         } else {
             Alert mensagem = new Alert(Alert.AlertType.ERROR);
             mensagem.setContentText("Nenhum produto selecionado!");
@@ -127,6 +134,7 @@ public class CadastroProdutoController {
         colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
         colPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
         colQuantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        colCod.setCellValueFactory(new PropertyValueFactory<>("cod_barra"));
 
         ListarProdutosTab(null);
     }
@@ -149,6 +157,7 @@ public class CadastroProdutoController {
             txtPreco.setText(nf.format(produto.getPreco()));
             txtQuantidade.setText(String.valueOf(produto.getQuantidade()));
             txtid.setText(String.format("%06d", produto.getId()));
+            txtCod.setText(produto.getCod());
         } else {
             Alert mensagem = new Alert(Alert.AlertType.INFORMATION);
             mensagem.setContentText("Selecione um produto na tabela!");
