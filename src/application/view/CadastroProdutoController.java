@@ -47,14 +47,13 @@ public class CadastroProdutoController {
     public void Salvar() {  
         if(txtNome.getText().isEmpty() || txtDescricao.getText().isEmpty() ||
            txtCategoria.getText().isEmpty() || txtPreco.getText().isEmpty() ||
-           txtQuantidade.getText().isEmpty()|| txtCod.getText().isEmpty()) {
+           txtCod.getText().isEmpty()) {
             
             String erro = "";
             if(txtNome.getText().isEmpty()) erro += "\nNome vazio";
             if(txtDescricao.getText().isEmpty()) erro += "\nDescrição vazia";
             if(txtCategoria.getText().isEmpty()) erro += "\nCategoria vazia";
             if(txtPreco.getText().isEmpty()) erro += "\nPreço vazio";
-            if(txtQuantidade.getText().isEmpty()) erro += "\nQuantidade vazia";
             if(txtCod.getText().isEmpty()) erro += "\nCódigo de Barras vazio";
 
             Alert mensagem = new Alert(Alert.AlertType.INFORMATION);
@@ -66,7 +65,6 @@ public class CadastroProdutoController {
                 produto.setDescricao(txtDescricao.getText());
                 produto.setCategoria(txtCategoria.getText());
                 produto.setPreco(Double.parseDouble(txtPreco.getText()));
-                produto.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
                 produto.setCod(txtCod.getText());
 
                 produto.Salvar();
@@ -134,7 +132,7 @@ public class CadastroProdutoController {
         colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
         colPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
         colQuantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
-        colCod.setCellValueFactory(new PropertyValueFactory<>("cod_barra"));
+        colCod.setCellValueFactory(new PropertyValueFactory<>("cod"));
 
         ListarProdutosTab(null);
     }

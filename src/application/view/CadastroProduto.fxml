@@ -24,7 +24,7 @@
       <TextField fx:id="txtCategoria" layoutX="426.0" layoutY="86.0" promptText="Categoria" />
 
       <TextField fx:id="txtPreco" layoutX="14.0" layoutY="142.0" promptText="Preço" />
-      <TextField fx:id="txtQuantidade" layoutX="225.0" layoutY="142.0" promptText="Quantidade" />
+      <TextField fx:id="txtQuantidade" disable="true" editable="false" layoutX="225.0" layoutY="142.0" promptText="Quantidade" />
 
       <!-- Labels -->
       <Label layoutX="14.0" layoutY="64.0" text="Nome" />

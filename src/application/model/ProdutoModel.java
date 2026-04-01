@@ -53,16 +53,15 @@ public class ProdutoModel {
             if (this.id > 0) {
                 // UPDATE
                 PreparedStatement consulta = conn.prepareStatement(
-                    "UPDATE produto SET nome=?, descricao=?, categoria=?, preco=?, quantidade=?, cod_barra=? WHERE id=?"
+                    "UPDATE produto SET nome=?, descricao=?, categoria=?, preco=?, cod_barra=? WHERE id=?"
                 );
 
                 consulta.setString(1, this.nome);
                 consulta.setString(2, this.descricao);
                 consulta.setString(3, this.categoria);
                 consulta.setDouble(4, this.preco);
-                consulta.setInt(5, this.quantidade);
-                consulta.setInt(7, this.id);
-                consulta.setString(6, this.cod_barra);
+                consulta.setInt(6, this.id);
+                consulta.setString(5, this.cod_barra);
 
                 consulta.executeUpdate();
 
@@ -73,15 +72,14 @@ public class ProdutoModel {
             } else {
                 // INSERT
                 PreparedStatement consulta = conn.prepareStatement(
-                    "INSERT INTO produto (nome, descricao, categoria, preco, quantidade,cod_barra) VALUES (?,?,?,?,?,?)"
+                    "INSERT INTO produto (nome, descricao, categoria, preco,cod_barra) VALUES (?,?,?,?,?)"
                 );
 
                 consulta.setString(1, this.nome);
                 consulta.setString(2, this.descricao);
                 consulta.setString(3, this.categoria);
                 consulta.setDouble(4, this.preco);
-                consulta.setInt(5, this.quantidade);
-                consulta.setString(6, this.cod_barra);
+                consulta.setString(5, this.cod_barra);
                 
                 consulta.executeUpdate();
 
