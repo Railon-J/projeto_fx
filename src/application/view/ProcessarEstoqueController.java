@@ -1,6 +1,6 @@
 package application.view;
 
-import application.model.ProdutoModel;
+import application.model.ProdutoModel;	
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -28,5 +28,6 @@ public class ProcessarEstoqueController {
     private ObservableList<ProdutoModel> listaProdutos;
     
     ProdutoModel produto = new ProdutoModel(0, null, null, null, 0, 0, null);
-
+    
+    
 }
