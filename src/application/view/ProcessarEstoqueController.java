@@ -16,6 +16,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ProcessarEstoqueController {
@@ -35,6 +36,7 @@ public class ProcessarEstoqueController {
     @FXML private TableColumn<ProdutoModel, Integer> colQuantidade; 
     @FXML private TableColumn<ProdutoModel, Integer> colCod; 
     @FXML private TableView<ProdutoModel> tabProdutos;
+    @FXML private ToggleGroup rdOperacao;
     private ObservableList<ProdutoModel> listaProdutos;
     
     ProdutoModel produto = new ProdutoModel(0, null, null, null, null, 0, 0);
@@ -49,17 +51,16 @@ public class ProcessarEstoqueController {
     	
     	ListarProdutosTab(null);
     	
-    	tabProdutos.setSelectionModel().selectedItemProperty().addListener(
+    	tabProdutos.getSelectionModel().selectedItemProperty().addListener(
     			(obs,selecao,novaSelecao)->{
     				if(novaSelecao != null) {
     					produto=novaSelecao;
-    					txtID.setText(String.format("%06d",produto.getID()));
-    					txtNome.setText(produto.getNome());
-    					txtCod.setText(produto.getCod());
+    					txtId.setText(String.format("%06d",produto.getID()));
+    					txtProduto.setText(produto.getNome());
+    					txtCod.setText(produto.getCodBarras());
     					txtQtd.setText("0");
     				}
-    			}
-    			);
+    			});
     	btnProcessar.setOnAction(e->{
     		produto.setQuantidade(Integer.parseInt(txtQtd.getText()));
     		RadioButton operacao = (RadioButton) rdOperacao.getSelectedToggle();

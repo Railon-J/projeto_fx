@@ -162,7 +162,6 @@ public class ProdutoModel {
                 resultado=consultaWhere.executeQuery();
             }
                        
-           
             while (resultado.next()) {
                 ProdutoModel p = new ProdutoModel(
                         resultado.getInt("id"),
