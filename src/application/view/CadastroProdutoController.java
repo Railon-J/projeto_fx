@@ -41,7 +41,7 @@ public class CadastroProdutoController {
     private ObservableList<ProdutoModel> listaProdutos;
     NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 
-    ProdutoModel produto = new ProdutoModel(0, null, null, null, 0, 0, null);
+    ProdutoModel produto = new ProdutoModel(0, null, null, null, null, 0, 0);
 
  // SALVAR
     public void Salvar() {  
@@ -65,10 +65,10 @@ public class CadastroProdutoController {
                 produto.setDescricao(txtDescricao.getText());
                 produto.setCategoria(txtCategoria.getText());
                 produto.setPreco(Double.parseDouble(txtPreco.getText()));
-                produto.setCod(txtCod.getText());
+                produto.setCodBarras(txtCod.getText());
 
                 produto.Salvar();
-                produto = new ProdutoModel(0, null, null, null, 0, 0, null);
+                produto = new ProdutoModel(0, null, null, null, null, 0, 0);
 
                 txtNome.clear();
                 txtDescricao.clear();
@@ -95,8 +95,8 @@ public class CadastroProdutoController {
             txtCategoria.setText(produto.getCategoria());
             txtPreco.setText(nf.format(produto.getPreco()));
             txtQuantidade.setText(String.valueOf(produto.getQuantidade()));
-            txtid.setText(String.format("%06d", produto.getId()));
-            txtCod.setText(produto.getCod());
+            txtid.setText(String.format("%06d", produto.getID()));
+            txtCod.setText(produto.getCodBarras());
         } else {
             Alert mensagem = new Alert(Alert.AlertType.INFORMATION);
             mensagem.setContentText("Digite algo para buscar!");
@@ -106,9 +106,9 @@ public class CadastroProdutoController {
 
     // EXCLUIR
     public void Excluir() {
-        if(produto.getId() > 0) {
+        if(produto.getID() > 0) {
             produto.Excluir();
-            produto = new ProdutoModel(0, null, null, null, 0, 0, null);
+            produto = new ProdutoModel(0, null, null, null, null, 0, 0);
 
             txtNome.clear();
             txtDescricao.clear();
@@ -154,8 +154,8 @@ public class CadastroProdutoController {
             txtCategoria.setText(produto.getCategoria());
             txtPreco.setText(nf.format(produto.getPreco()));
             txtQuantidade.setText(String.valueOf(produto.getQuantidade()));
-            txtid.setText(String.format("%06d", produto.getId()));
-            txtCod.setText(produto.getCod());
+            txtid.setText(String.format("%06d", produto.getID()));
+            txtCod.setText(produto.getCodBarras());
         } else {
             Alert mensagem = new Alert(Alert.AlertType.INFORMATION);
             mensagem.setContentText("Selecione um produto na tabela!");
