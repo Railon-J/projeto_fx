@@ -6,10 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane prefHeight="400.0" prefWidth="600.0"
-           xmlns="http://javafx.com/javafx/25"
-           xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="application.view.TelaController">
+<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.MenuInicialController">
 
    <children>
       
@@ -20,27 +17,21 @@
 
           <Menu text="Inicio">
             <items>
-              <MenuItem fx:id="itemSair"
-                        text="Sair"
-                        onAction="#Sair"/>
+              <MenuItem fx:id="itemSair" onAction="#Sair" text="Sair" />
             </items>
           </Menu>
 
           <Menu text="Cadastro">
             <items>
-              <MenuItem fx:id="itemProduto"
-                        text="Clientes"/>
+              <MenuItem fx:id="itemProduto" text="Clientes" />
               
-              <MenuItem fx:id="itemCliente"
-                        text="Produtos"
-                        onAction="#abrirCadastroProdutos"/>
+              <MenuItem fx:id="itemCliente" onAction="#abrirCadastroProdutos" text="Produtos" />
             </items>
           </Menu>
 
           <Menu text="Usuario">
             <items>
-              <MenuItem fx:id="itemProcessaEstoque"
-                        text="Processar estoque"/>
+              <MenuItem fx:id="itemProcessaEstoque" onAction="#abrirProcessamento" text="Processar estoque" />
             </items>
           </Menu>
 

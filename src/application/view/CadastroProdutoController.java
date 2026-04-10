@@ -67,7 +67,7 @@ public class CadastroProdutoController {
                 produto.setPreco(Double.parseDouble(txtPreco.getText()));
                 produto.setCodBarras(txtCod.getText());
 
-                produto.Salvar();
+                produto.salvar();
                 produto = new ProdutoModel(0, null, null, null, null, 0, 0);
 
                 txtNome.clear();
@@ -88,14 +88,14 @@ public class CadastroProdutoController {
     // BUSCAR
     public void Pesquisar() {
         if(!txtBuscar.getText().isEmpty()) {
-            produto.Buscar(txtBuscar.getText());
+            produto.buscar(txtBuscar.getText());
             
             txtNome.setText(produto.getNome());
             txtDescricao.setText(produto.getDescricao());
             txtCategoria.setText(produto.getCategoria());
             txtPreco.setText(nf.format(produto.getPreco()));
             txtQuantidade.setText(String.valueOf(produto.getQuantidade()));
-            txtid.setText(String.format("%06d", produto.getID()));
+            txtid.setText(String.format("%06d", produto.getId()));
             txtCod.setText(produto.getCodBarras());
         } else {
             Alert mensagem = new Alert(Alert.AlertType.INFORMATION);
@@ -106,8 +106,8 @@ public class CadastroProdutoController {
 
     // EXCLUIR
     public void Excluir() {
-        if(produto.getID() > 0) {
-            produto.Excluir();
+        if(produto.getId() > 0) {
+            produto.excluir();
             produto = new ProdutoModel(0, null, null, null, null, 0, 0);
 
             txtNome.clear();
@@ -126,19 +126,20 @@ public class CadastroProdutoController {
     }
 
     public void initialize() {
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        colDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-        colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-        colPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
-        colQuantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
-        colCod.setCellValueFactory(new PropertyValueFactory<>("cod"));
+    	colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+    	colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+    	colCod.setCellValueFactory(new PropertyValueFactory<>("codBarras"));
+    	colDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+    	colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+    	colPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
+    	colQuantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+
 
         ListarProdutosTab(null);
     }
 
     public void ListarProdutosTab(String valor) {
-        List<ProdutoModel> produtos = produto.ListarProdutos(valor);
+        List<ProdutoModel> produtos = produto.listarProdutos(valor);
         listaProdutos = FXCollections.observableArrayList(produtos);
         tabProdutos.setItems(listaProdutos);
     }
@@ -147,14 +148,14 @@ public class CadastroProdutoController {
     private void PesquisarTabela(MouseEvent event) {
         ProdutoModel selecionado = tabProdutos.getSelectionModel().getSelectedItem();
         if (selecionado != null) {
-            produto.Buscar(selecionado.getNome());
+            produto.buscar(selecionado.getNome());
 
             txtNome.setText(produto.getNome());
             txtDescricao.setText(produto.getDescricao());
             txtCategoria.setText(produto.getCategoria());
             txtPreco.setText(nf.format(produto.getPreco()));
             txtQuantidade.setText(String.valueOf(produto.getQuantidade()));
-            txtid.setText(String.format("%06d", produto.getID()));
+            txtid.setText(String.format("%06d", produto.getId()));
             txtCod.setText(produto.getCodBarras());
         } else {
             Alert mensagem = new Alert(Alert.AlertType.INFORMATION);

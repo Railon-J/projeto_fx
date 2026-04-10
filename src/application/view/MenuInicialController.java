@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
-public class TelaController {
+public class MenuInicialController {
 
     @FXML
     private MenuItem itemCliente;
@@ -29,6 +29,19 @@ public class TelaController {
     private void abrirCadastroProdutos() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/application/view/CadastroProduto.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setTitle("Cadastro de Produtos");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void abrirProcessamento() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/application/view/ProcessarEstoque.fxml"));
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setTitle("Cadastro de Produtos");

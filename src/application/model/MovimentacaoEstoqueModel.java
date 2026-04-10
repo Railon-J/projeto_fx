@@ -1,4 +1,4 @@
-package application.view;
+package application.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,7 +37,7 @@ public class MovimentacaoEstoqueModel {
 	public void setNomeProd(String nomeProd) {this.nomeProd=nomeProd;}
 	public void setData(String data) {this.data=data;}
 	public void setQuantidade(int quantidade) {this.quantidade=quantidade;}
-	public void tipo(String tipo) {this.tipo=tipo;}
+	public void setTipo(String tipo) {this.tipo=tipo;}
 	
 	public void InsereMovimentacao() {
 		try(Connection conn = conexao.getConnection();
@@ -70,6 +70,12 @@ public class MovimentacaoEstoqueModel {
 						resultado.getString("data"),
 						resultado.getInt("quantidade"),
 						resultado.getString("tipo"));
+				this.setID(resultado.getInt("id"));
+				this.setNomeProd(resultado.getString("nome"));
+				this.setIdProd(resultado.getInt("idProd"));
+				this.setTipo(resultado.getString("tipo"));
+				this.setData(resultado.getString("data"));
+				this.setQuantidade(resultado.getInt("quantidade"));
 				movimentacao.add(m);
 			}
 		} catch(Exception e) {e.printStackTrace();}

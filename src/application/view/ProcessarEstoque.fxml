@@ -11,57 +11,57 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ProcessarEstoqueController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ProcessarEstoqueController">
+
    <children>
-      <Label layoutY="25.0" style="-fx-background-color: gray;" text="                                                                           Processar Estoque" textAlignment="RIGHT" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
+      <Label layoutY="25.0" style="-fx-background-color: gray;" text="                                                             Processar Estoque" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font><Font name="System Bold" size="14.0" /></font>
       </Label>
-      <TableView fx:id="tabEstoque" layoutY="200.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-        <columns>
-          <TableColumn prefWidth="52.800048828125" text="ID" />
-          <TableColumn prefWidth="97.5999755859375" text="Cód.Barras" />
-          <TableColumn prefWidth="125.5999755859375" text="Nome" />
-          <TableColumn prefWidth="139.199951171875" text="Descrição" />
-          <TableColumn minWidth="0.0" prefWidth="128.800048828125" text="Categoria" />
-          <TableColumn minWidth="0.800048828125" prefWidth="56.00006103515625" text="Qtd" />
-        </columns>
+
+      <!-- Tabela de Produtos -->
+      <TableView fx:id="tabProdutos" layoutY="200.0" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <columns>
+            <TableColumn fx:id="colId" prefWidth="50" text="ID" />
+            <TableColumn fx:id="colCod" prefWidth="100" text="Cód.Barras" />
+            <TableColumn fx:id="colNome" prefWidth="120" text="Nome" />
+            <TableColumn fx:id="colDescricao" prefWidth="140" text="Descrição" />
+            <TableColumn fx:id="colCategoria" prefWidth="120" text="Categoria" />
+            <TableColumn fx:id="colQuantidade" prefWidth="60" text="Qtd" />
+         </columns>
       </TableView>
+
+      <!-- Campos de Pesquisa -->
       <Label layoutX="14.0" layoutY="79.0" text="Pesquisar">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <Button fx:id="btnProcessar" layoutX="526.0" layoutY="146.0" mnemonicParsing="false" text="Processar" />
-      <Button fx:id="btnBuscar" layoutX="526.0" layoutY="97.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" text="Buscar" />
-      <TextField fx:id="txtPesquisar" layoutX="14.0" layoutY="98.0" prefHeight="26.0" prefWidth="500.0" />
-      <TextField fx:id="txtId" layoutX="15.0" layoutY="146.0" prefHeight="26.0" prefWidth="50.0" />
-      <Text layoutX="15.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Text>
-      <TextField fx:id="txtCod" layoutX="51.0" layoutY="146.0" prefHeight="26.0" prefWidth="150.0" AnchorPane.rightAnchor="371.0" />
-      <Text layoutX="79.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cód.Barras">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Text>
-      <TextField fx:id="txtProduto" layoutX="239.0" layoutY="146.0" prefHeight="26.0" prefWidth="215.0" />
-      <Text layoutX="239.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produto">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Text>
-      <TextField fx:id="txtQtd" layoutX="463.0" layoutY="146.0" prefHeight="26.0" prefWidth="50.0" />
-      <Text layoutX="463.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qtd">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Text>
-      <RadioButton layoutX="454.0" layoutY="61.0" mnemonicParsing="false" selected="true" text="Entrada">
-         <toggleGroup>
-            <ToggleGroup fx:id="operacao" />
-         </toggleGroup>
+         <font><Font name="System Bold" size="12.0" /></font>
+      </Label>
+      <TextField fx:id="txtPesquisar" layoutX="14.0" layoutY="98.0" prefWidth="500.0" />
+      <Button fx:id="btnBuscar" layoutX="526.0" layoutY="97.0" prefHeight="26.0" prefWidth="66.0" text="Buscar" />
+
+      <!-- Campos de Edição -->
+      <TextField fx:id="txtId" layoutX="15.0" layoutY="146.0" prefWidth="50.0" />
+      <Text layoutX="15.0" layoutY="142.0" text="ID"><font><Font name="System Bold" size="12.0" /></font></Text>
+
+      <TextField fx:id="txtCod" layoutX="75.0" layoutY="146.0" prefWidth="150.0" />
+      <Text layoutX="75.0" layoutY="142.0" text="Cód.Barras"><font><Font name="System Bold" size="12.0" /></font></Text>
+
+      <TextField fx:id="txtProduto" layoutX="239.0" layoutY="146.0" prefWidth="215.0" />
+      <Text layoutX="239.0" layoutY="142.0" text="Produto"><font><Font name="System Bold" size="12.0" /></font></Text>
+
+      <TextField fx:id="txtQtd" layoutX="463.0" layoutY="146.0" prefWidth="50.0" />
+      <Text layoutX="463.0" layoutY="142.0" text="Qtd"><font><Font name="System Bold" size="12.0" /></font></Text>
+
+      <!-- Botões -->
+      <Button fx:id="btnProcessar" layoutX="526.0" layoutY="146.0" text="Processar" />
+
+      <!-- Radio Buttons -->
+      <RadioButton fx:id="rbEntrada" layoutX="454.0" layoutY="61.0" selected="true" text="Entrada">
+         <toggleGroup><ToggleGroup fx:id="rdOperacao" /></toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="528.0" layoutY="61.0" mnemonicParsing="false" text="Saída" toggleGroup="$operacao" />
+      <RadioButton fx:id="rbSaida" layoutX="528.0" layoutY="61.0" text="Saída" toggleGroup="$rdOperacao" />
+      <Button fx:id="btnHistorico" layoutX="375.0" layoutY="57.0" onAction="#abrirHistorico" text="Histórico">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
